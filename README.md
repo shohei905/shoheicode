@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-< lang="ja">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>319分の1 抽選ゲーム</title>
+    <title>8192分の1 抽選ゲーム</title>
     <style>
         /* --- 全体デザイン --- */
         body {
@@ -13,7 +13,7 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: #e0ffe0; 
             font-family: 'Arial', sans-serif;
         }
         /* ゲーム画面とスタート画面のコンテナ */
@@ -119,8 +119,8 @@
 <body>
     <div id="start-screen">
         <h1>準備はいいか塚田淳！！</h1>
-        <p class="subtitle">319分の1 抽選ゲーム</p>
-        <p>大当たり確率 $1/319$ の運命を、今、決める時！</p>
+        <p class="subtitle">8192分の1 抽選ゲーム</p>
+        <p>大当たり確率 $1/8192$ の運命を、今、決める時！</p>
         <button id="start-button">
             ゲームを始める
         </button>
@@ -131,7 +131,7 @@
             <div class="count-item">当たり回数: <span id="win-count">0</span>回</div>
         </div>
 
-        <h1>319分の1 抽選ゲーム</h1>
+        <h1>8192分の1 抽選ゲーム</h1>
         <p>ボタンを押して、花火を打ち上げよう！</p>
         <button id="firework-button">
             🚀 ボタンを押す
@@ -152,7 +152,7 @@
         const winCountDisplay = document.getElementById('win-count');
 
         const WIN_NUMBER = 1;    
-        const MAX_NUMBER = 319;  
+        const MAX_NUMBER = 8192;  // 8192分の1の確率
         const WAIT_TIME = 4100;  
        
         // カウンター変数の初期化
@@ -173,7 +173,6 @@
             // スタート画面を非表示にし、ゲーム画面を表示する
             startScreen.style.display = 'none';
             gameContainer.style.display = 'block';
-            // game-containerがflexboxで中央揃えされているため、blockでも問題ありません。
         });
 
         button.addEventListener('click', () => {
@@ -188,10 +187,10 @@
             resultDisplay.textContent = '⏱️ 抽選中...しばらくお待ちください。';
             resultDisplay.classList.remove('success');
 
-            // 3. 1から319までのランダムな整数を生成
+            // 3. 1から8192までのランダムな整数を生成
             const randomNumber = Math.floor(Math.random() * MAX_NUMBER) + 1;
            
-            console.log(`生成された数字: ${randomNumber}`);
+            // console.log(`生成された数字: ${randomNumber}`); // デバッグ用のログは削除またはコメントアウト
 
             // 4. 4.1秒後に結果を表示し、ボタンを有効化する
             setTimeout(() => {
@@ -203,10 +202,11 @@
                     winCount++;
                     updateCounters();
 
-                    resultDisplay.textContent = '🎉 大当たり！花火が打ち上がった！ 🎉';
+                    // ★★★ ここを「おめでとう塚田淳！１Gゲットや！！！！！」に変更しました ★★★
+                    resultDisplay.textContent = '🎉 おめでとう塚田淳！１Gゲットや！！！！！ 🎉'; 
                     resultDisplay.classList.add('success');
-                    // アラートで特別感
-                    alert("✨ 祝！花火大当たり！ ✨");
+                    // アラートも変更
+                    alert("✨ 祝！おめでとう塚田淳！１Gゲットや！！！！！ ✨");
                 } else {
                     // ハズレの場合
                     resultDisplay.textContent = `ハズレ... (出目: ${randomNumber}) また挑戦しよう。`;
